@@ -117,7 +117,6 @@ const LoginRegister = () => {
                 onClick={goBackToHome}
             />
             <div className={`wrapper${action}`}>
-                {/* Login Form */}
                 <div className="form-box login">
                     <form onSubmit={handleLogin}>
                         <h1>Login</h1>

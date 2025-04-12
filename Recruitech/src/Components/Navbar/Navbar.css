@@ -1,6 +1,5 @@
 nav {
     width: 100%;
-    /* background: #333; */
     color: #fff;
     padding: 4px 0;
     position: fixed;
@@ -14,6 +13,7 @@ nav {
 
 .logo{
     width: 180px;
+    margin-left: -90px;
 }
 
 nav ul li{
@@ -31,6 +31,32 @@ nav ul li{
 .menu-icon{
     display: none;
 }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.center-nav {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.center-nav li {
+    display: inline-block;
+    list-style: none;
+    margin: 5px 20px;
+    font-size: 16px;
+}
+
+.login-btn {
+    margin-left: auto;
+    margin-right: -10px;
+}
+
 
 @media (max-width: 1000px){
     .logo{

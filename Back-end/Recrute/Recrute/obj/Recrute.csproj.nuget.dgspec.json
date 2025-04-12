@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/adnan/Desktop/lab/Back-end/Recrute/Recrute/Recrute.csproj": {}
+    "/Users/adnan/Desktop/lab2-recrute/Back-end/Recrute/Recrute/Recrute.csproj": {}
   },
   "projects": {
-    "/Users/adnan/Desktop/lab/Back-end/Recrute/Recrute/Recrute.csproj": {
+    "/Users/adnan/Desktop/lab2-recrute/Back-end/Recrute/Recrute/Recrute.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/adnan/Desktop/lab/Back-end/Recrute/Recrute/Recrute.csproj",
+        "projectUniqueName": "/Users/adnan/Desktop/lab2-recrute/Back-end/Recrute/Recrute/Recrute.csproj",
         "projectName": "Recrute",
-        "projectPath": "/Users/adnan/Desktop/lab/Back-end/Recrute/Recrute/Recrute.csproj",
+        "projectPath": "/Users/adnan/Desktop/lab2-recrute/Back-end/Recrute/Recrute/Recrute.csproj",
         "packagesPath": "/Users/adnan/.nuget/packages/",
-        "outputPath": "/Users/adnan/Desktop/lab/Back-end/Recrute/Recrute/obj/",
+        "outputPath": "/Users/adnan/Desktop/lab2-recrute/Back-end/Recrute/Recrute/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/adnan/.nuget/NuGet/NuGet.Config"
@@ -104,7 +104,7 @@
             },
             "Stripe.net": {
               "target": "Package",
-              "version": "[47.2.0, )"
+              "version": "[41.3.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

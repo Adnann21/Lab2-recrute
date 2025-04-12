@@ -10,35 +10,49 @@ import Contact from './Components/Contact/Contact';
 import Footer from './Components/Footer/Footer';
 import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
 import LoginRegister from './Components/LoginRegister/LoginRegister';
+import PricingPage from './Components/PricingPage/PricingPage';
 
 function App() {
   const [playState, setPlayState] = useState(false);
   const location = useLocation();
 
   const isLoginPage = location.pathname === '/login';
+  const isPricingPage = location.pathname === '/pricing';
 
   return (
-    <div className={isLoginPage ? 'login-body' : 'normal-body'}>
-      {!isLoginPage && <Navbar />}
+    <div
+      className={
+        isLoginPage
+          ? 'login-body'
+          : isPricingPage
+          ? 'pricing-body'
+          : 'normal-body'
+      }
+    >
+      {!(isLoginPage || isPricingPage) && <Navbar />}
 
       <Routes>
         <Route path="/login" element={<LoginRegister />} />
-        <Route path="/" element={
-          <>
-            <Hero />
-            <div className="container">
-              <Title subTitle='OUR PRICING' title='What We Offer' />
-              <Programs />
-              <About setPlayState={setPlayState} />
-              <Title subTitle='TESTIMONIALS' title='What Customer Says' />
-              <Testimonials />
-              <Title subTitle='Contact Us' title='Get In Touch' />
-              <Contact />
-              <Footer />
-            </div>
-            <VideoPlayer playState={playState} setPlayState={setPlayState} />
-          </>
-        } />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />
+              <div className="container">
+                <Title subTitle="OUR PRICING" title="What We Offer" />
+                <Programs />
+                <About setPlayState={setPlayState} />
+                <Title subTitle="TESTIMONIALS" title="What Customer Says" />
+                <Testimonials />
+                <Title subTitle="Contact Us" title="Get In Touch" />
+                <Contact />
+                <Footer />
+              </div>
+              <VideoPlayer playState={playState} setPlayState={setPlayState} />
+            </>
+          }
+        />
       </Routes>
     </div>
   );

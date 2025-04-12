@@ -1365,15 +1365,15 @@
           }
         }
       },
-      "Newtonsoft.Json/13.0.3": {
+      "Newtonsoft.Json/12.0.3": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Newtonsoft.Json.dll": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Newtonsoft.Json.dll": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
         }
@@ -1479,10 +1479,10 @@
           }
         }
       },
-      "Stripe.net/47.2.0": {
+      "Stripe.net/41.3.0": {
         "type": "package",
         "dependencies": {
-          "Newtonsoft.Json": "13.0.3",
+          "Newtonsoft.Json": "12.0.3",
           "System.Configuration.ConfigurationManager": "6.0.0"
         },
         "compile": {
@@ -3966,15 +3966,14 @@
         "mysqlconnector.nuspec"
       ]
     },
-    "Newtonsoft.Json/13.0.3": {
-      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
       "type": "package",
-      "path": "newtonsoft.json/13.0.3",
+      "path": "newtonsoft.json/12.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
-        "README.md",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
@@ -3983,15 +3982,17 @@
         "lib/net40/Newtonsoft.Json.xml",
         "lib/net45/Newtonsoft.Json.dll",
         "lib/net45/Newtonsoft.Json.xml",
-        "lib/net6.0/Newtonsoft.Json.dll",
-        "lib/net6.0/Newtonsoft.Json.xml",
         "lib/netstandard1.0/Newtonsoft.Json.dll",
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "newtonsoft.json.13.0.3.nupkg.sha512",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.12.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
@@ -4145,15 +4146,14 @@
         "snappier.nuspec"
       ]
     },
-    "Stripe.net/47.2.0": {
-      "sha512": "e1FR3JTUbSWYDxE78APyml5V2SV3wS6z/eIQN2OAdtrRSoahOCAK4OcWiHn4582HPf2mJmS1AvyDZO+OqAHOfw==",
+    "Stripe.net/41.3.0": {
+      "sha512": "+GQt1zQxkyphG+49c2SV8+18wTfIOhct//94p5VpXVUuDMody7rIgR0mN3ygNJabDHnsHvFE04JIrGXzG5pg1w==",
       "type": "package",
-      "path": "stripe.net/47.2.0",
+      "path": "stripe.net/41.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
-        "README.md",
         "icon.png",
         "lib/net461/Stripe.net.dll",
         "lib/net461/Stripe.net.xml",
@@ -4161,15 +4161,11 @@
         "lib/net5.0/Stripe.net.xml",
         "lib/net6.0/Stripe.net.dll",
         "lib/net6.0/Stripe.net.xml",
-        "lib/net7.0/Stripe.net.dll",
-        "lib/net7.0/Stripe.net.xml",
-        "lib/net8.0/Stripe.net.dll",
-        "lib/net8.0/Stripe.net.xml",
         "lib/netcoreapp3.1/Stripe.net.dll",
         "lib/netcoreapp3.1/Stripe.net.xml",
         "lib/netstandard2.0/Stripe.net.dll",
         "lib/netstandard2.0/Stripe.net.xml",
-        "stripe.net.47.2.0.nupkg.sha512",
+        "stripe.net.41.3.0.nupkg.sha512",
         "stripe.net.nuspec"
       ]
     },
@@ -5208,7 +5204,7 @@
       "MongoDB.Driver.Core >= 2.30.0",
       "MongoDB.bson >= 3.1.0",
       "Pomelo.EntityFrameworkCore.MySql >= 6.0.3",
-      "Stripe.net >= 47.2.0",
+      "Stripe.net >= 41.3.0",
       "Swashbuckle.AspNetCore >= 6.5.0",
       "System.Data.SqlClient >= 4.8.6"
     ]
@@ -5219,11 +5215,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/adnan/Desktop/lab/Back-end/Recrute/Recrute/Recrute.csproj",
+      "projectUniqueName": "/Users/adnan/Desktop/lab2-recrute/Back-end/Recrute/Recrute/Recrute.csproj",
       "projectName": "Recrute",
-      "projectPath": "/Users/adnan/Desktop/lab/Back-end/Recrute/Recrute/Recrute.csproj",
+      "projectPath": "/Users/adnan/Desktop/lab2-recrute/Back-end/Recrute/Recrute/Recrute.csproj",
       "packagesPath": "/Users/adnan/.nuget/packages/",
-      "outputPath": "/Users/adnan/Desktop/lab/Back-end/Recrute/Recrute/obj/",
+      "outputPath": "/Users/adnan/Desktop/lab2-recrute/Back-end/Recrute/Recrute/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/adnan/.nuget/NuGet/NuGet.Config"
@@ -5316,7 +5312,7 @@
           },
           "Stripe.net": {
             "target": "Package",
-            "version": "[47.2.0, )"
+            "version": "[41.3.0, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
