@@ -11,6 +11,7 @@ import Footer from './Components/Footer/Footer';
 import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
 import LoginRegister from './Components/LoginRegister/LoginRegister';
 import PricingPage from './Components/PricingPage/PricingPage';
+import CheckoutPage from './Components/CheckoutPage/CheckoutPage'; // ✅ Import the new CheckoutPage
 
 function App() {
   const [playState, setPlayState] = useState(false);
@@ -18,22 +19,24 @@ function App() {
 
   const isLoginPage = location.pathname === '/login';
   const isPricingPage = location.pathname === '/pricing';
+  const isCheckoutPage = location.pathname === '/checkout';
 
   return (
     <div
       className={
-        isLoginPage
+        isLoginPage || isCheckoutPage
           ? 'login-body'
           : isPricingPage
           ? 'pricing-body'
           : 'normal-body'
       }
     >
-      {!(isLoginPage || isPricingPage) && <Navbar />}
+      {!(isLoginPage || isPricingPage || isCheckoutPage) && <Navbar />}
 
       <Routes>
         <Route path="/login" element={<LoginRegister />} />
         <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} /> {/* ✅ Add checkout route */}
         <Route
           path="/"
           element={

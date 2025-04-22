@@ -51,7 +51,7 @@ const LoginRegister = () => {
             if (res.ok) {
                 const data = await res.json();
                 localStorage.setItem('token', data.token);  // Store token in localStorage
-                navigate('/');  // Redirect to home page after successful login
+                navigate('/pricing');  // Redirect to home page after successful login
             } else {
                 const errorData = await res.json();
                 setLoginError(errorData.message || 'Login failed');

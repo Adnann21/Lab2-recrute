@@ -1,0 +1,101 @@
+.checkout-page * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.checkout-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #0d1117;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    color: #fff;
+}
+
+.checkout-logo {
+    position: absolute;
+    top: 30px;
+    left: 45px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.checkout-heading {
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.checkout-summary {
+    background: #1f283b;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 40px;
+    color: #fff;
+    text-align: left;
+}
+
+.checkout-summary p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.checkout-summary strong {
+    color: #e33058;
+}
+
+.checkout-form {
+    background: #1f283b;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.checkout-form label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.checkout-form input[type="text"],
+.checkout-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #e33058;
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+.checkout-form input:focus {
+    border-color: #e33058;
+    box-shadow: 0 0 10px rgba(227, 48, 88, 0.5);
+}
+
+.checkout-form button {
+    padding: 14px;
+    font-size: 16px;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #e33058;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
+.checkout-form button:hover {
+    background: #e33058;
+}
