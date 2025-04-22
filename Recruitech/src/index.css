@@ -56,3 +56,10 @@ a{
     background-position: center;
 }
 
+.pricing-body{
+    background: url('./assets/background.jpg')
+    no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+

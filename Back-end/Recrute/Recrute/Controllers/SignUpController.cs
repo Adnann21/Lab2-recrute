@@ -25,33 +25,42 @@ namespace Recrute.Controllers
 
             try
             {
-                // Hash the password using BCrypt
-                string hash = BCrypt.Net.BCrypt.HashString(user.Password);
+                var us = _db.user.Where(a => a.username == user.username).FirstOrDefault();
 
-                // Create new user
-                var newUser = new Users
+                    if (us != null)
+                    {
+                        return BadRequest("Account alredy exist");
+                    }
+                else
                 {
-                    username = user.username,
-                    Email = user.Email,
-                    Password = hash,
-                    Role = 0
-                };
+                    // Hash the password using BCrypt
+                    string hash = BCrypt.Net.BCrypt.HashString(user.Password);
 
-                // Optional: Create related RecruteComp object
-                /*var r = new RecruteComp
-                {
-                    RecrComp = user.Username,
-                    Nr_Employ = 0
-                };*/
+                    // Create new user
+                    var newUser = new Users
+                    {
+                        username = user.username,
+                        Email = user.Email,
+                        Password = hash,
+                        Role = 0
+                    };
 
-                // Add user and optionally RecruteComp
-                _db.user.Add(newUser);
-                // _db.recruteComp.Add(r); // Uncomment if needed
+                    // Optional: Create related RecruteComp object
+                    /*var r = new RecruteComp
+                    {
+                        RecrComp = user.Username,
+                        Nr_Employ = 0
+                    };*/
 
-                await _db.SaveChangesAsync();
+                    // Add user and optionally RecruteComp
+                    _db.user.Add(newUser);
+                    // _db.recruteComp.Add(r); // Uncomment if needed
 
-                // Return created result
-                return CreatedAtAction(nameof(Signup), new { Username = newUser.username }, newUser);
+                    await _db.SaveChangesAsync();
+
+                    // Return created result
+                    return CreatedAtAction(nameof(Signup), new { Username = newUser.username }, newUser);
+                }
             }
             catch (DbUpdateException dbEx)
             {
