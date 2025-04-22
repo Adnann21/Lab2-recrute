@@ -8,7 +8,7 @@ yarn-error.log
 /dist
 /build
 
-# .env files (environment variables)
+# Ignore .env files
 .env
 
 # System files (e.g., macOS .DS_Store)

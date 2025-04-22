@@ -5220,11 +5220,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Lab2-recrute\\Back-end\\Recrute\\Recrute\\Recrute.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\Lab1\\Back-end\\Recrute\\Recrute\\Recrute.csproj",
       "projectName": "Recrute",
-      "projectPath": "C:\\Users\\User\\Desktop\\Lab2-recrute\\Back-end\\Recrute\\Recrute\\Recrute.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\Lab1\\Back-end\\Recrute\\Recrute\\Recrute.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Lab2-recrute\\Back-end\\Recrute\\Recrute\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\Lab1\\Back-end\\Recrute\\Recrute\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

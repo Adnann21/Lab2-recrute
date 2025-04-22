@@ -108,7 +108,7 @@ namespace Recrute.Controllers
                 else
                 {
                     emp.Email = e.Email;
-                    emp.Region = e.Region;
+                   
 
                     _context.employ.Update(emp);
                     _context.SaveChanges(true);

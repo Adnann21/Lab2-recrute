@@ -27,10 +27,10 @@ namespace Recrute.Controllers
             {
                 var us = _db.user.Where(a => a.username == user.username).FirstOrDefault();
 
-                    if (us != null)
-                    {
-                        return BadRequest("Account alredy exist");
-                    }
+                if (us != null)
+                {
+                    return BadRequest("Account alredy exist");
+                }
                 else
                 {
                     // Hash the password using BCrypt
