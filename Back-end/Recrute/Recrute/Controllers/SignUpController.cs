@@ -45,16 +45,10 @@ namespace Recrute.Controllers
                         Role = 0
                     };
 
-                    // Optional: Create related RecruteComp object
-                    /*var r = new RecruteComp
-                    {
-                        RecrComp = user.Username,
-                        Nr_Employ = 0
-                    };*/
+               
 
                     // Add user and optionally RecruteComp
                     _db.user.Add(newUser);
-                    // _db.recruteComp.Add(r); // Uncomment if needed
 
                     await _db.SaveChangesAsync();
 

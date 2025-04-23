@@ -19,15 +19,15 @@ namespace Recrute.Controllers
             this.db = db;
         }
 
-        [HttpPut("Password")]
-        public async Task<IActionResult> ChangePass([FromBody] Password p)
+        [HttpPost("Password")]
+        public async Task<IActionResult> ChangePassword([FromBody] Password p)
         {
             try {
-                string email = "string";
-                var user = db.user.FirstOrDefault(x=>x.username==email);
+
+                var user = db.user.FirstOrDefault(x=>x.username==username);
                 if (user == null)
                 {
-                    return BadRequest("Passwor not valid");
+                    return BadRequest("Username not valid");
                 }
                 else if (BCrypt.Net.BCrypt.Verify(p.OldPassword,user.Password)) {
 
@@ -44,7 +44,7 @@ namespace Recrute.Controllers
                         db.user.Update(user);
                         db.SaveChanges();
 
-                        SendEmailWithAttachment(email);
+                        SendEmailWithAttachment(user.Email);
                         return Ok();
 
                     }                

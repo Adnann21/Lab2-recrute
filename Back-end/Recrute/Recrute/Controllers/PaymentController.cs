@@ -20,7 +20,7 @@ namespace Recrute.Controllers
 
         }
         public static string username { get; set; }
-        public static double Price = 300.00; // Assuming this is in EUR
+       
 
         [HttpPost("Payment")]
         public async Task<ActionResult> Pay([FromBody] Payment pay)
@@ -76,13 +76,14 @@ namespace Recrute.Controllers
                                 Nr_Employ = pay.userCount,
 
                             };
-
+                            user.Role = 2;
                             UsingPack u = new UsingPack()
                             {
                                 RecrComp = rec.username,
                                 Exp_Day = DateTime.Now.Date
                             };
 
+                            _db.user.Update(user);
                             _db.usingpack.Add(u);
                             _db.recruteComp.Add(r);
                             _db.SaveChanges();

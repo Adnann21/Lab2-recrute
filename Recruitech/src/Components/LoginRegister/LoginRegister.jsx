@@ -12,37 +12,24 @@ const LoginRegister = () => {
     const [registerError, setRegisterError] = useState('');
     const navigate = useNavigate();
 
-    // Switch to Register view
     const registerLink = () => setAction(' active');
-    
-    // Switch to Login view
     const loginLink = () => setAction('');
-    
-    // Go back to home page
     const goBackToHome = () => navigate('/');
 
-    // Handle Login form submission
     const handleLogin = async (e) => {
         e.preventDefault();
-
-        // Clear previous errors
         setLoginError('');
 
-        // Form validation (you can expand this as needed)
         if (!loginData.username || !loginData.password) {
             setLoginError('Username and Password are required!');
             return;
         }
 
         try {
-            // Encode the username and password to avoid issues with special characters in the URL
             const encodedUsername = encodeURIComponent(loginData.username);
             const encodedPassword = encodeURIComponent(loginData.password);
-
-            // Construct the API URL using the encoded username and password
             const apiUrl = `https://localhost:7159/login?Username=${encodedUsername}&password=${encodedPassword}`;
 
-            // Make the API request
             const res = await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -50,8 +37,9 @@ const LoginRegister = () => {
 
             if (res.ok) {
                 const data = await res.json();
-                localStorage.setItem('token', data.token);  // Store token in localStorage
-                navigate('/pricing');  // Redirect to home page after successful login
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify({ username: loginData.username })); // Save username
+                navigate('/pricing');
             } else {
                 const errorData = await res.json();
                 setLoginError(errorData.message || 'Login failed');
@@ -62,14 +50,10 @@ const LoginRegister = () => {
         }
     };
 
-    // Handle Register form submission
     const handleRegister = async (e) => {
         e.preventDefault();
-
-        // Clear previous errors
         setRegisterError('');
 
-        // Form validation (you can expand this as needed)
         if (!registerData.username || !registerData.email || !registerData.password) {
             setRegisterError('All fields are required!');
             return;
@@ -81,8 +65,7 @@ const LoginRegister = () => {
         }
 
         try {
-            // Replace this with your actual API URL when available
-            const res = await fetch('https://localhost:7159/signup', {  // API URL for registration
+            const res = await fetch('https://localhost:7159/signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(registerData),
@@ -90,8 +73,8 @@ const LoginRegister = () => {
 
             if (res.ok) {
                 alert('Registration successful. You can now log in.');
-                loginLink();  // Switch to login view after successful registration
-            } else  {
+                loginLink();
+            } else {
                 const errorData = await res.json();
                 setRegisterError(errorData.message || 'Registration failed');
             }
@@ -154,12 +137,10 @@ const LoginRegister = () => {
                             <p>Don't have an account?<a href="#" onClick={registerLink}> Register</a></p>
                         </div>
 
-                        {/* Login Error */}
                         {loginError && <p className="error">{loginError}</p>}
                     </form>
                 </div>
 
-                {/* Register Form */}
                 <div className="form-box register">
                     <form onSubmit={handleRegister}>
                         <h1>Sign Up</h1>
@@ -210,7 +191,6 @@ const LoginRegister = () => {
                             <p>Already have an account?<a href="#" onClick={loginLink}> Login</a></p>
                         </div>
 
-                        {/* Register Error */}
                         {registerError && <p className="error">{registerError}</p>}
                     </form>
                 </div>

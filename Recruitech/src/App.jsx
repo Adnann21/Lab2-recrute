@@ -11,7 +11,8 @@ import Footer from './Components/Footer/Footer';
 import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
 import LoginRegister from './Components/LoginRegister/LoginRegister';
 import PricingPage from './Components/PricingPage/PricingPage';
-import CheckoutPage from './Components/CheckoutPage/CheckoutPage'; // ✅ Import the new CheckoutPage
+import CheckoutPage from './Components/CheckoutPage/CheckoutPage';
+import ChangePassword from './Components/ChangePassword/ChangePassword';
 
 function App() {
   const [playState, setPlayState] = useState(false);
@@ -20,23 +21,24 @@ function App() {
   const isLoginPage = location.pathname === '/login';
   const isPricingPage = location.pathname === '/pricing';
   const isCheckoutPage = location.pathname === '/checkout';
+  const isChangePassword = location.pathname === '/changepassword';
+
+  const getBodyClass = () => {
+    if (isLoginPage || isCheckoutPage) return 'login-body';
+    if (isPricingPage) return 'pricing-body';
+    if (isChangePassword) return 'cp-body'; // 👈 Add your custom class here
+    return 'normal-body';
+  };
 
   return (
-    <div
-      className={
-        isLoginPage || isCheckoutPage
-          ? 'login-body'
-          : isPricingPage
-          ? 'pricing-body'
-          : 'normal-body'
-      }
-    >
-      {!(isLoginPage || isPricingPage || isCheckoutPage) && <Navbar />}
+    <div className={getBodyClass()}>
+      {!(isLoginPage || isPricingPage || isCheckoutPage || isChangePassword) && <Navbar />}
 
       <Routes>
         <Route path="/login" element={<LoginRegister />} />
         <Route path="/pricing" element={<PricingPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} /> {/* ✅ Add checkout route */}
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/changepassword" element={<ChangePassword />} />
         <Route
           path="/"
           element={

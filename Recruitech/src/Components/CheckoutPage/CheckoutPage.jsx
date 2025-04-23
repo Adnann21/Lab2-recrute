@@ -78,73 +78,41 @@ const CheckoutPage = () => {
     setLoading(true);
     setError('');
 
-<<<<<<< HEAD
-    // Prepare the card data object
+ 
     const cardData = {
-      planName,               // Plan name (e.g., Companies Plan)
-      userCount,              // Number of users
-      totalPrice,             // Total price
-      cardNumber: cardNumber.replace(/\s+/g, ''), // Clean card number (remove spaces)
-      cardholderName,         // Cardholder's name
-      expiryDate,             // Expiry date (MM/YY)
-      cvv,                    // CVV
-    };
-
-    try {
-      // Sending POST request to backend API (adjust the URL if necessary)
-=======
-    const cardData = {
-      planName,
-      userCount,
-      totalPrice,
+      planName,              
+      userCount,           
+      totalPrice,            
       cardNumber: cardNumber.replace(/\s+/g, ''),
-      cardholderName,
-      expiryDate,
-      cvv,
+      cardholderName,        
+      expiryDate,           
+      cvv,                   
     };
 
     try {
->>>>>>> ac367585d8dd748d3dded7bf4bd305c9e201992e
       const response = await fetch('https://localhost:7159/Payment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-<<<<<<< HEAD
-        body: JSON.stringify(cardData),  // Send the cardData object in the request body
-      });
-
-      // Check if the response is successful
-=======
         body: JSON.stringify(cardData),
       });
 
->>>>>>> ac367585d8dd748d3dded7bf4bd305c9e201992e
       if (!response.ok) {
         throw new Error('Failed to submit payment details');
       }
 
-<<<<<<< HEAD
-      // Assuming the backend sends a success message, you can process it here
+
       const result = await response.json();
 
-      alert('✅ Purchase completed! (Fake payment for demo)');
-      // Optionally, redirect or clear form data after successful payment
+      alert('✅ Purchase completed!');
+
 
     } catch (error) {
-      // Handle errors (e.g., failed fetch, network issues)
-      setError('Error submitting payment details. Please try again later.');
-    } finally {
-      setLoading(false);  // Reset loading state
-=======
-      const result = await response.json();
 
-      alert('✅ Purchase completed! (Fake payment for demo)');
-    } catch (error) {
       setError('Error submitting payment details. Please try again later.');
     } finally {
-      setLoading(false);
->>>>>>> ac367585d8dd748d3dded7bf4bd305c9e201992e
+      setLoading(false); 
     }
   };
 

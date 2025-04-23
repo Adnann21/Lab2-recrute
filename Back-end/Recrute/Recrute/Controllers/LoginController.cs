@@ -61,87 +61,71 @@ namespace Recrute.Controllers
             try
             {
                 var user1 = _db.user.FirstOrDefault(a => a.username == Username);
-                
+
 
                 if (user1 != null)
                 {
                     // Verify the password using BCrypt
                     if (BCrypt.Net.BCrypt.Verify(password, user1.Password))
                     {
-                        /* var b = _db.user.First(u => u.username == Username);
+                        var b = _db.user.First(u => u.username == Username);
 
-                         var pay = _db.usingpack.Where(u => u.RecrComp == b.RecrComp).FirstOrDefault();
-                         // Perform login logic (you might want to return tokens, etc. in an API)
-                         if (pay == null)
-                         {
+                        var pay = _db.usingpack.Where(u => u.RecrComp == b.username).FirstOrDefault();
+                        // Perform login logic (you might want to return tokens, etc. in an API)
+                        if (pay == null)
+                        {
 
-                             return BadRequest("Company doesn't have any payment");
-                         }
-                         else
-                         {
-                             if (pay.Exp_Day.AddYears(1) == DateTime.Now)
-                             {
-                                 if (0 < b.Nr_Employ && b.Nr_Employ <= 20)
-                                 {
-                                     PaymentController.Price = 30000;
-                                 }
-                                 else if (20 < b.Nr_Employ && b.Nr_Employ <= 50)
-                                 {
-                                     PaymentController.Price = 50000;
-                                 }
-                                 else if (50 < b.Nr_Employ)
-                                 {
-                                     PaymentController.Price = 70000;
-                                 }
-
-                             }
+                            return BadRequest("Company doesn't have any payment");
+                        }
+                        else
+                        {
+                            if (pay.Exp_Day.AddYears(1) == DateTime.Now)
+                            {
+                                return BadRequest("Company has to pay");
+                            }
 
 
-                             else if (pay.Exp_Day.AddYears(1) <= DateTime.Now)
-                             {
-                                 if (0 < b.Nr_Employ && b.Nr_Employ <= 20)
-                                 {
-                                     PaymentController.Price = 30000;
-                                 }
-                                 else if (20 < b.Nr_Employ && b.Nr_Employ <= 50)
-                                 {
-                                     PaymentController.Price = 50000;
-                                 }
-                                 else if (50 < b.Nr_Employ)
-                                 {
-                                     PaymentController.Price = 70000;
-                                 }
+                            else if (pay.Exp_Day.AddYears(1) <= DateTime.Now)
+                            {
+                                return BadRequest("Company has to pay");
 
-                             }
- */
+                            }
 
-                        /* else if (pay.Exp_Day.AddYears(1) >= DateTime.Now)
-                         {*/
 
-                        PaymentController.username = user1.username;    
-                                    EmployController.CompanyName = user1.username;
-                                    ExportController.CompName = user1.username;
+                            else if (pay.Exp_Day.AddYears(1) >= DateTime.Now)
+                            {
+
+                                PaymentController.username = user1.username;
+                                EmployController.CompanyName = user1.username;
+                                ExportController.CompName = user1.username;
                                 PasswordController.username = user1.username;
                                 ApplicantsController.Username = user1.username;
                                 CompanyController.RecruteComp = user1.username;
 
-                            return Ok(user1.Role);
-                        
-                  }
-                    else
-                    {
-                        return Unauthorized("Invalid User");
-                    }
+                                return Ok(user1.Role);
+
                             }
-                        
-                                      
-                
+                            else
+                            {
+                                return Unauthorized("Invalid User");
+                            }
+
+
+                        }
+                    }
+                    return Unauthorized("Password wrong");
+
+                }
+
+
+
                 else
                 {
                     return NotFound("Invalid username");
                 }
-               
+
             }
+
             catch (Exception ex)
             {
                 // Log the exception for debugging purposes
