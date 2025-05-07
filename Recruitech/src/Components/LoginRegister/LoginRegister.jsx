@@ -39,7 +39,13 @@ const LoginRegister = () => {
                 const data = await res.json();
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('user', JSON.stringify({ username: loginData.username })); // Save username
-                navigate('/pricing');
+
+                // Redirect based on username
+                if (loginData.username.toLowerCase() === 'adnan') {
+                    navigate('/admin'); // Redirect admin to admin dashboard
+                } else {
+                    navigate('/pricing'); // Redirect others to pricing page
+                }
             } else {
                 const errorData = await res.json();
                 setLoginError(errorData.message || 'Login failed');

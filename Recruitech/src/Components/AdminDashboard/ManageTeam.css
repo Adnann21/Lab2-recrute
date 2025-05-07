@@ -1,0 +1,119 @@
+.manage-team {
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #141b2d;
+    box-sizing: border-box;
+  }
+  
+  .team-header h1 {
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+  
+  .team-header p {
+    color: #4cceac;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .team-table {
+    background-color: #1f2a40;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team-header-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    background-color: #6a1b9a;
+    padding: 12px;
+    border-radius: 8px 8px 0 0;
+    color: #fff;
+  }
+  
+  .team-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-bottom: 1px solid #333;
+    color: #e0e0e0;
+  }
+  
+  .pagination-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .pagination-controls button {
+    background-color: #1f2a40;
+    color: #fff;
+    border: 1px solid #4cceac;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .pagination-controls button:hover {
+    background-color: #4cceac;
+    color: #1f2a40;
+  }
+  
+  .pagination-controls .active {
+    background-color: #4cceac;
+    color: #1f2a40;
+  }
+  
+  .role-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: #4cceac;
+    color: #141b2d;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    gap: 6px;
+    min-width: 100px;
+    justify-content: center;
+  }
+  
+  .role-badge img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .pagination-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+    gap: 8px;
+  }
+  
+  .pagination-controls button {
+    background-color: #1f2a40;
+    color: #ffffff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  .pagination-controls button:hover {
+    background-color: #4cceac;
+    color: #141b2d;
+  }
+  
+  .pagination-controls button.active {
+    background-color: #4cceac;
+    color: #141b2d;
+    font-weight: bold;
+  }
+  
