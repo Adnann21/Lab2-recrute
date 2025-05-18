@@ -31,7 +31,7 @@ namespace Recrute.Data
         public DbSet<Workers> workers { get; set; }
           public DbSet<Company> Comp {  get; set; }
           public DbSet<Password> Pass {  get; set; }
-        public DbSet<Models.Applicants> applicants { get; set; }
+        public DbSet<Models.Candidate> Candidat { get; set; }
         public DbSet<Jobs> jobs { get; set; }
        
     }

@@ -99,7 +99,7 @@ namespace Recrute.Controllers
                                 EmployController.CompanyName = user1.username;
                                 ExportController.CompName = user1.username;
                                 PasswordController.username = user1.username;
-                                ApplicantsController.Username = user1.username;
+                                CandidatesController.Username = user1.username;
                                 CompanyController.RecruteComp = user1.username;
 
                                 return Ok(user1.Role);

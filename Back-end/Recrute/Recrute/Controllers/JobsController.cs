@@ -65,7 +65,7 @@ namespace Recrute.Controllers
                     _db.jobs.Add(b);
                     _db.SaveChanges();
                    
- return View(j);
+                 return View(j);
                     
                 }
 

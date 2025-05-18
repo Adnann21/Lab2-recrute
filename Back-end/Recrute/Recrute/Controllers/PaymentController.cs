@@ -20,7 +20,23 @@ namespace Recrute.Controllers
 
         }
         public static string username { get; set; }
-       
+
+
+        [HttpGet("PaymentHistory")]
+        public async Task<ActionResult> PayMemory()
+        {
+            try
+            {
+                var u = _db.usingpack.ToList().Where(a=>a.Exp_Day.Month == DateTime.Now.Month);
+                
+                return Ok(u);
+
+            }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
+        }
 
         [HttpPost("Payment")]
         public async Task<ActionResult> Pay([FromBody] Payment pay)
