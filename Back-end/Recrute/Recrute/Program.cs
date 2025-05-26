@@ -1,67 +1,69 @@
-using Recrute.Data;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-
-
-using Recrute.Migrations;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using MongoDB.Driver.Core.Configuration;
-using MongoDB.Driver;
-
+using Microsoft.IdentityModel.Tokens;
+using Recrute.Data;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+// Add services to the container
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-
-
 builder.Services.AddSwaggerGen();
 
+// Add custom DB service
 builder.Services.AddSingleton<RecruteDbService>();
-    
 
-// Add services
-builder.Services.AddControllers();
-
+// MySQL connection
 var connectionString = builder.Configuration.GetConnectionString("Connection");
-
 builder.Services.AddDbContext<RecruteDbContext>(options =>
     options.UseMySql(
-        connectionString,  // Get actual connection string
-        new MySqlServerVersion(new Version(6, 0, 3)) // Specify your MySQL version
+        connectionString,
+        new MySqlServerVersion(new Version(6, 0, 3)) // Replace with your MySQL version if needed
     )
 );
 
+// JWT Authentication
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+    });
 
+builder.Services.AddAuthorization();
 
-
+// CORS for React frontend
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowReactApp", builder =>
+    options.AddPolicy("AllowReactApp", policy =>
     {
-        builder.WithOrigins("http://localhost:5173")
-         .AllowAnyMethod()
-        .AllowAnyHeader();
-
+        policy.WithOrigins("http://localhost:5173")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
     });
 });
 
-
 var app = builder.Build();
-// Configure the HTTP request pipeline.
+
+// Configure middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors("AllowReactApp");
-app.UseHttpsRedirection();
 
+app.UseHttpsRedirection();
+app.UseCors("AllowReactApp");
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

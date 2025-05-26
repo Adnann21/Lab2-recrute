@@ -498,3 +498,5 @@ C:\Users\User\Desktop\Lab1\Back-end\Recrute\Recrute\obj\Debug\net6.0\Recrute.gen
 C:\Users\User\Desktop\Lab1\Back-end\Recrute\Recrute\obj\Debug\net6.0\ref\Recrute.dll
 C:\Users\User\Desktop\Lab2-recrute\Back-end\Recrute\Recrute\bin\Debug\net6.0\MySqlConnector.dll
 C:\Users\User\Desktop\Lab2-recrute\Back-end\Recrute\Recrute\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\User\Desktop\Lab2-recrute\Back-end\Recrute\Recrute\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\User\Desktop\Lab2-recrute\Back-end\Recrute\Recrute\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
