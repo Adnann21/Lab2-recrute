@@ -33,7 +33,9 @@ namespace Recrute.Data
           public DbSet<Password> Pass {  get; set; }
         public DbSet<Models.Candidate> Candidat { get; set; }
         public DbSet<Jobs> jobs { get; set; }
-       
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+
+
     }
-  
+
 }
