@@ -49,7 +49,7 @@ public class AuthController : ControllerBase
         {
             Token = refreshToken,
             Username = user.username,
-            ExpiryDate = DateTime.UtcNow.AddMinutes(30)
+            ExpiryDate = DateTime.Now.AddHours(0.5)
         };
 
         _context.RefreshTokens.Add(rt);
@@ -81,7 +81,7 @@ public class AuthController : ControllerBase
         {
             Token = newRefreshToken,
             Username = user.username,
-            ExpiryDate = DateTime.UtcNow.AddMinutes(30)
+            ExpiryDate = DateTime.Now.AddHours(0.5)
         });
 
         await _context.SaveChangesAsync();
@@ -108,7 +108,7 @@ public class AuthController : ControllerBase
             issuer: _configuration["Jwt:Issuer"],
             audience: _configuration["Jwt:Audience"],
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(15),
+            expires: DateTime.Now.AddHours(0.5),
             signingCredentials: creds
         );
 
