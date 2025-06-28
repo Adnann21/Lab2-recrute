@@ -19,6 +19,32 @@ namespace Recrute.Controllers
             this.db = db;
         }
 
+        [HttpGet("Client")]
+        public int getClient()
+        {
+            try
+            {
+                var comp = db.user.Where(a=>a.Role==2).ToList();
+                
+                if (comp.Count == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return comp.Count;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
+        }
+
+
         [HttpPost("Password")]
         public async Task<IActionResult> ChangePassword([FromBody] Password p)
         {

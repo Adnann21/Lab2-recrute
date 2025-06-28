@@ -22,6 +22,32 @@ namespace ExportToExcelService.Controllers
             _context = context;
         }
 
+        [HttpGet("Placements")]
+        public int getPlacements()
+        {
+            try
+            {
+                
+                var workers = _context.workers.Where(x => x.CompName == CompName).ToList();
+
+                if (workers.Count == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return workers.Count;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+            return 0;
+        }
+
         [HttpGet("Workers")]
         public async Task<IActionResult> ExportToExcel()
         {

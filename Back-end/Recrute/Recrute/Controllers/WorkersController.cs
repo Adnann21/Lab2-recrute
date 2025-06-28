@@ -10,10 +10,36 @@ namespace Recrute.Controllers
         RecruteDbContext db;
         public static string Username {  get; set; }
 
-        public WorkersController(ref RecruteDbContext db)
+        public WorkersController(RecruteDbContext db)
         {
             this.db = db;
         }
+        [HttpGet("ActiveJobs")]
+        public int GetJobs()
+        {
+            try
+            {
+                var comp = db.user.Where(a => a.username == Username).FirstOrDefault();
+                var jobs = db.jobs.Where(a => a.RecrComp == Username).ToList();
+                if(jobs.Count == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return jobs.Count;
+                }
+                
+               
+            }
+            catch (Exception ex)
+            {
+                 return 0;
+            }
+           
+        }
+
+
 
         [HttpGet("Works/List")]
         public async Task<IActionResult> Get()
@@ -32,8 +58,8 @@ namespace Recrute.Controllers
         }
 
 
-        [HttpPost("Works/Create")]
-       public async Task<IActionResult> Create (Workers w)
+        [HttpPost ("Works/Create")]
+       public async Task<IActionResult> Create(Workers w)
         {
             try {
                 if (w == null)

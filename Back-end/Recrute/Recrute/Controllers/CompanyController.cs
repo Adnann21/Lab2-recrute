@@ -14,7 +14,32 @@ namespace Recrute.Controllers
         public CompanyController( RecruteDbContext db) {
             db = db;
         }
-    
+        [HttpGet("CompanyContracter")]
+        public int GetComp()
+        {
+            try
+            {
+                var comp = db.user.Where(a => a.username == RecruteComp).First();
+                var company=db.Comp.Where(a=>a.RecruteComp==comp.username).ToList();
+
+                if (company.Count == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return company.Count;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        
 
         [HttpGet("Company/List")]
        public async Task<IActionResult> Get()

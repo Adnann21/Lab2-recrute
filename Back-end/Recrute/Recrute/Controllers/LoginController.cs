@@ -18,7 +18,6 @@ namespace Recrute.Controllers
 
         }
 
-
         // POST: LoginController/Create
         [HttpGet]
 

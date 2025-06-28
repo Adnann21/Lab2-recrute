@@ -11,12 +11,35 @@ namespace Recrute.Controllers
 
         private readonly string _uploadFolder = "/CV";
         RecruteDbContext db;
-        public static String Username  /*{  get; set; }*/= "string";
+        public static String Username  {  get; set; }
 
         public CandidatesController(RecruteDbContext db)
         {
             this.db = db;
         }
+        [HttpGet("Candidate")]
+        public  int getCand()
+        {
+            try
+            {
+                var comp = db.user.Where(a => a.username == Username).FirstOrDefault();
+                var can = db.Candidat.Where(a => a.RecrComp == comp.username).ToList();
+                int i = can.Count();
+                if (i == 0)
+                {
+                    return i;
+                }
+                else
+                {
+                    return i;
+                }
+            }catch (Exception ex)
+            {
+                return 0;
+            }
+           
+        }
+
 
         [HttpGet("Candidate/List")]
         public async Task<IActionResult> Get()

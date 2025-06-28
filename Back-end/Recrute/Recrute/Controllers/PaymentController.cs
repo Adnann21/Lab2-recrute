@@ -21,6 +21,30 @@ namespace Recrute.Controllers
         }
         public static string username { get; set; }
 
+        [HttpGet("PaymentProchesed")]
+        public int getPayment(){
+
+            try
+            {
+                var package = _db.usingpack.Where(a => a.RecrComp!=null).ToList();
+           
+                if (package.Count == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return package.Count;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
 
         [HttpGet("PaymentHistory")]
         public async Task<ActionResult> PayMemory()
