@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "pMkxBaz8MWNnUVAD5GppoAGA4qqCoo/1ttzwgA4KIHw=",
+  "Hash": "rXqVOi7MWnd6XQvR3YjzHvoaDcxiFC7Nrn+C9u8faR4=",
   "Source": "Recrute",
   "BasePath": "_content/Recrute",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "Recrute\\wwwroot",
+      "Source": "Recrute",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\Lab2-Recrute\\Back-end\\Recrute\\Recrute\\wwwroot\\",
+      "BasePath": "_content/Recrute",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\Lab2-Recrute\\Back-end\\Recrute\\Recrute\\wwwroot\\uploads\\Adnan Kastrati_CV.pdf",
+      "SourceId": "Recrute",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\Lab2-Recrute\\Back-end\\Recrute\\Recrute\\wwwroot\\",
+      "BasePath": "_content/Recrute",
+      "RelativePath": "uploads/Adnan Kastrati_CV.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Adnan Kastrati_CV.pdf"
+    }
+  ]
 }

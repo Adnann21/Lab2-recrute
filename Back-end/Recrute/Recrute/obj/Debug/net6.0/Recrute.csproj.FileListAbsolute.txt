@@ -500,3 +500,4 @@ C:\Users\User\Desktop\Lab2-recrute\Back-end\Recrute\Recrute\bin\Debug\net6.0\MyS
 C:\Users\User\Desktop\Lab2-recrute\Back-end\Recrute\Recrute\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\User\Desktop\Lab2-recrute\Back-end\Recrute\Recrute\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\User\Desktop\Lab2-recrute\Back-end\Recrute\Recrute\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\User\Desktop\Lab2-Recrute\Back-end\Recrute\Recrute\bin\Debug\net6.0\Recrute.staticwebassets.runtime.json

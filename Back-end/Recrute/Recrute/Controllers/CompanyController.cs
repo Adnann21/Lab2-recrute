@@ -39,7 +39,7 @@ namespace Recrute.Controllers
             }
         }
 
-        
+      
 
         [HttpGet("Company/List")]
        public async Task<IActionResult> Get()

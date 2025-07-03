@@ -18,7 +18,6 @@ const Navbar = () => {
     };
     window.addEventListener('scroll', handleScroll);
 
-    // Restore user from localStorage
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
@@ -37,10 +36,10 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
-    localStorage.removeItem('token'); // If you store token
-    setUser(null); // Update state
+    localStorage.removeItem('token');
+    setUser(null);
     setDropdownOpen(false);
-    navigate('/'); // Optional redirect after logout
+    navigate('/');
   };
 
   const handleChangePassword = () => {

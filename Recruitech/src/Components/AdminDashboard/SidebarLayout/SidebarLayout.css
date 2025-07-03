@@ -1,0 +1,126 @@
+/* Sidebar Layout Styles */
+
+.sidebar-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #1f2a40;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.sidebar-logo img {
+  width: 150px;
+}
+
+.sidebar-links {
+  width: 100%;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 15px 23px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sidebar-link:hover {
+  background-color: #1abc9c;
+  color: white;
+}
+
+.sidebar-icon {
+  margin-right: 15px;
+  font-size: 20px;
+}
+
+/* Sidebar User Section */
+.sidebar-user {
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  color: white;
+  background-color: #2c3e50; /* Slightly darker background for the user section */
+  padding: 15px;
+  border-radius: 10px; /* Rounded corners */
+  width: 100%;
+}
+
+.sidebar-user h1 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.sidebar-user p {
+  font-size: 14px;
+  color: #4cceac; /* Highlight role with a color */
+  margin: 0;
+}
+
+.sidebar-user p {
+  font-weight: 500; /* Make the role stand out a bit more */
+  margin-top: 5px;
+}
+
+/* Grouping Styles */
+.sidebar-group {
+  margin-top: 5px;
+}
+
+.group-title {
+  padding: 15px 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: transparent;
+  cursor: default;
+  pointer-events: none;
+}
+
+.sub-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sub-link:hover {
+  background-color: #1abc9c;
+}
+
+.sub-link span {
+  font-weight: normal;
+}
+
+.main-content {
+  flex: 1;
+  background-color: #141b2d;
+  padding: 20px;
+  overflow-y: auto;
+  height: 100vh;
+  box-sizing: border-box;
+  color: white;
+  overflow: hidden;
+}

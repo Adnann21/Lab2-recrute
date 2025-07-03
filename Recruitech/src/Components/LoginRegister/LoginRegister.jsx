@@ -16,39 +16,66 @@ const LoginRegister = () => {
     const loginLink = () => setAction('');
     const goBackToHome = () => navigate('/');
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        setLoginError('');
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoginError('');  // Pastro gabimet e mëparshme
 
-        if (!loginData.username || !loginData.password) {
-            setLoginError('Username and Password are required!');
-            return;
-        }
+    if (!loginData.username || !loginData.password) {
+        setLoginError('Username and Password are required!');
+        return;
+    }
 
-        try {
-            const encodedUsername = encodeURIComponent(loginData.username);
-            const encodedPassword = encodeURIComponent(loginData.password);
-            const apiUrl = `https://localhost:7159/login?Username=${encodedUsername}&password=${encodedPassword}`;
+    try {
+        const res = await fetch('https://localhost:7159/api/Auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(loginData)
+        });
 
-            const res = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-            });
+        if (res.ok) {
+            const data = await res.json();
+            const { accessToken, refreshToken, role } = data;
 
-            if (res.ok) {
-                const data = await res.json();
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('user', JSON.stringify({ username: loginData.username })); // Save username
-                navigate('/pricing');
-            } else {
-                const errorData = await res.json();
-                setLoginError(errorData.message || 'Login failed');
+            localStorage.setItem('token', accessToken);
+            localStorage.setItem('refreshToken', refreshToken);
+            localStorage.setItem('user', JSON.stringify({ username: loginData.username, role }));
+
+            // Redirect based on role
+            switch (role) {
+                case 1:
+                    navigate('/employee');
+                    break;
+                case 2:
+                    navigate('/company');
+                    break;
+                case 3:
+                    navigate('/admin');
+                    break;
+                default:
+                    navigate('/pricing');
+                    break;
             }
-        } catch (error) {
-            console.error('Login error:', error);
-            setLoginError('An error occurred during login.');
+        } else {
+            const errorData = await res.json();
+
+            if (errorData.errors) {
+                // Merr të gjitha mesazhet e gabimeve nga backend
+                const messages = Object.values(errorData.errors).flat();
+                const combinedMessages = messages.join('\n');
+                alert(combinedMessages);
+                setLoginError(combinedMessages);
+            } else {
+                const errorMessage = errorData.message || JSON.stringify(errorData);
+                alert(errorMessage);
+                setLoginError(errorMessage);
+            }
         }
-    };
+    } catch (error) {
+        console.error('Login error:', error);
+        setLoginError('An error occurred during login.');
+    }
+};
+
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -65,10 +92,10 @@ const LoginRegister = () => {
         }
 
         try {
-            const res = await fetch('https://localhost:7159/signup', {
+            const res = await fetch('https://localhost:7159/api/Auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(registerData),
+                body: JSON.stringify(registerData)
             });
 
             if (res.ok) {
@@ -76,7 +103,7 @@ const LoginRegister = () => {
                 loginLink();
             } else {
                 const errorData = await res.json();
-                setRegisterError(errorData.message || 'Registration failed');
+                setRegisterError(errorData || 'Registration failed');
             }
         } catch (error) {
             console.error('Register error:', error);
@@ -115,7 +142,7 @@ const LoginRegister = () => {
                         </div>
                         <div className="input-box">
                             <input
-                                type="password"
+                                type="Password"
                                 placeholder="Password"
                                 required
                                 value={loginData.password}

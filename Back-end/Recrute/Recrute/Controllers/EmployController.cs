@@ -65,7 +65,7 @@ namespace Recrute.Controllers
                         username = d.Username,
                         Email = d.Email,
                         
-                        Role = 2,
+                        Role = 1,
                         
                         Password = hash,
                       

@@ -7,6 +7,9 @@ using System.Security.Cryptography;
 using System.Text;
 using Recrute.Models;
 using Recrute.Data;
+using System.ComponentModel.DataAnnotations;
+using ExportToExcelService.Controllers;
+using Recrute.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -20,6 +23,22 @@ public class AuthController : ControllerBase
         _context = context;
         _configuration = configuration;
     }
+
+
+    [HttpGet("Users")]
+    public async Task<IActionResult> GetUsers()
+    {
+
+        var users = _context.user.Where(x => x.Role != 0).ToList();
+
+        if (users == null || users.Count == 0)
+        {
+            return NotFound(new { Message = "No users found." });
+        }
+
+        return Ok(users);
+    }
+
 
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] Users user)
@@ -36,9 +55,9 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] Users login)
+    public async Task<IActionResult> Login([FromBody] LoginDto login)
     {
-        var user = await _context.user.FirstOrDefaultAsync(u => u.username == login.username);
+        var user = await _context.user.FirstOrDefaultAsync(u => u.username == login.Username);
         if (user == null || !BCrypt.Net.BCrypt.Verify(login.Password, user.Password))
             return Unauthorized("Invalid username or password");
 
@@ -51,14 +70,61 @@ public class AuthController : ControllerBase
             Username = user.username,
             ExpiryDate = DateTime.Now.AddHours(0.5)
         };
+        
+        var b = _context.user.First(u => u.username == login.Username);
 
-        _context.RefreshTokens.Add(rt);
+        var pay = _context.usingpack.Where(u => u.RecrComp == b.username).FirstOrDefault();
+        // Perform login logic (you might want to return tokens, etc. in an API)
+        if (pay == null)
+        {
+
+            return BadRequest("Company doesn't have any payment");
+        }
+        else
+        {
+            if (pay.Exp_Day.AddYears(1) == DateTime.Now)
+            {
+                return BadRequest("Company has to pay");
+            }
+
+
+            else if (pay.Exp_Day.AddYears(1) <= DateTime.Now)
+            {
+                return BadRequest("Company has to pay");
+
+            }
+
+
+            else if (pay.Exp_Day.AddYears(1) >= DateTime.Now)
+            {
+
+                PaymentController.username = login.Username;
+                EmployController.CompanyName = login.Username;
+                ExportController.CompName = login.Username;
+                PasswordController.username = login.Username;
+                CandidatesController.Username = login.Username;
+                CompanyController.RecruteComp = login.Username;
+
+                
+
+            }
+            else
+            {
+                return Unauthorized("Invalid User");
+            }
+        }
+
+            _context.RefreshTokens.Add(rt);
         await _context.SaveChangesAsync();
+
+
 
         return Ok(new
         {
             accessToken,
-            refreshToken
+            refreshToken,
+            
+            role = user.Role
         });
     }
 
@@ -119,4 +185,13 @@ public class AuthController : ControllerBase
     {
         return Convert.ToBase64String(RandomNumberGenerator.GetBytes(256));
     }
+}
+
+public class LoginDto
+{
+    [Required]
+    public string Username { get; set; }
+
+    [Required]
+    public string Password { get; set; }
 }
